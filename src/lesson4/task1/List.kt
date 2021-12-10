@@ -75,6 +75,7 @@ fun invertPositives(list: MutableList<Int>) {
  * Из имеющегося списка целых чисел, сформировать список их квадратов
  */
 fun squares(list: List<Int>) = list.map { it * it }
+fun squares2(list: List<Double>) = list.map { it * it }
 
 /**
  * Пример
@@ -115,14 +116,24 @@ fun buildSumExample(list: List<Int>) = list.joinToString(separator = " + ", post
  * по формуле abs = sqrt(a1^2 + a2^2 + ... + aN^2).
  * Модуль пустого вектора считать равным 0.0.
  */
-fun abs(v: List<Double>): Double = TODO()
+fun abs(v: List<Double>): Double {
+    return when {
+        v.none() -> 0.0
+        else -> sqrt(squares2(v).sum())
+    }
+}
 
 /**
  * Простая
  *
  * Рассчитать среднее арифметическое элементов списка list. Вернуть 0.0, если список пуст
  */
-fun mean(list: List<Double>): Double = TODO()
+fun mean(list: List<Double>): Double {
+    return when {
+        list.none() -> 0.0
+        else -> list.sum() / list.size.toDouble()
+    }
+}
 
 /**
  * Средняя
